@@ -1,0 +1,8 @@
+body{
+  background-color: #eeeeee;
+}
+
+.fern-bg{
+  background-image: url("src/assets/image/fern.jpg");
+  background-position: 0px;
+}
