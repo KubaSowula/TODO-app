@@ -9,8 +9,8 @@ interface Props {
 function DeleteTask(props: Props) {
   const handleDelete = () => {
     props.setTasks((prevTasks) => {
-      const editTask = prevTasks.filter((t) => t.id != props.task.id);
-      return editTask;
+      const deleteTask = prevTasks.filter((t) => t.id != props.task.id);
+      return deleteTask;
     });
   };
 

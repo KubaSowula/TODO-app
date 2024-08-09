@@ -10,6 +10,7 @@ import {
 import { Ttask } from "@/shared/types";
 import { useState } from "react";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { v4 as uuidv4 } from "uuid";
 
 interface Props {
   setTasks: React.Dispatch<React.SetStateAction<Ttask[]>>;
@@ -25,11 +26,8 @@ function AddTask(props: Props) {
     e.preventDefault();
 
     props.setTasks((prev) => {
-      // const lastId = (prev.at(-1) ?? { id: 0 }).id;
-      const lastId = prev.length === 0 ? 0 : prev[prev.length - 1].id;
-
       const task: Ttask = {
-        id: lastId + 1,
+        id: uuidv4(),
         date: date,
         title: title,
         isStarted: isStarted,
