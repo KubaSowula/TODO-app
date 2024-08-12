@@ -2,16 +2,16 @@ import { Checkbox } from "@/shared/components/checkbox";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import EditTask from "../Main/EditTask.tsx/EditTask";
 import DeleteTask from "../DeleteTask/DeleteTask";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import { Ttask } from "@/shared/types";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 function Tasks() {
-  const [tasks, setTasks] = useLocalStorage<Ttask[]>("task", []);
+  const [tasks, setTasks] = useLocalStorage<Ttask[]>("filtredTask", []);
 
   return (
     <div>
-      {tasks.map((task) => {
-        return (
+      {tasks &&
+        tasks.map((task) => (
           <div
             key={task.id}
             className="bg-white border border-gray-200 my-2 p-3 py-5 grid grid-cols-12"
@@ -38,8 +38,7 @@ function Tasks() {
               ></div>
             </div>
           </div>
-        );
-      })}
+        ))}
     </div>
   );
 }
