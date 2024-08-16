@@ -2,5 +2,6 @@ export type Ttask = {
     title: string,
     date: string,
     id: string,
-    isStarted: boolean
+    isStarted: boolean,
+    completed: boolean
 }

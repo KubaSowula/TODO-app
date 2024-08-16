@@ -1,24 +1,28 @@
 import "../../App.css";
 import MainHeader from "./MainHeader";
 import Tasks from "../Tasks/Tasks";
-import Completed from "../Completed/Completed";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { Ttask } from "@/shared/types";
+import CompletedContent from "../CompletedContent/CompletedContent";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function Main() {
-  // const [tasks, setTasks] = useState(() => {
-  //   const savedTasks = localStorage.getItem("tasks");
-  //   return savedTasks ? JSON.parse(savedTasks) : [];
-  // });
-
-  const [, setTasks] = useLocalStorage<Ttask[]>("task", []);
+  const [tasks, setTasks] = useLocalStorage<Ttask[]>("task", []);
+  const [, setFilteredTasks] = useLocalStorage<Ttask[]>("filteredTask", []);
 
   return (
-    <div className="w-[60%] m-auto">
-      <MainHeader setTasks={setTasks} />
-      <Tasks />
-      <Completed />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="w-[60%] m-auto">
+        <MainHeader setTasks={setTasks} />
+        <Tasks />
+        <CompletedContent
+          tasks={tasks}
+          setTasks={setTasks}
+          setFilteredTasks={setFilteredTasks}
+        />
+      </div>
+    </DndProvider>
   );
 }
 

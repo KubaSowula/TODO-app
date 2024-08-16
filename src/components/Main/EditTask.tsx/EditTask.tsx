@@ -21,6 +21,7 @@ function EditTask({ task, setTasks }: Props) {
   const [title, updateTitle] = useState(task.title);
   const [date, updateDate] = useState(task.date);
   const [isStarted, updateIsStarted] = useState(task.isStarted);
+  const [completed, updateCompleted] = useState(task.completed);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -30,6 +31,7 @@ function EditTask({ task, setTasks }: Props) {
       date: date,
       title: title,
       isStarted: isStarted,
+      completed: completed
     };
 
     setTasks((prevTasks) => {

@@ -5,24 +5,34 @@ import { Ttask } from "@/shared/types";
 
 function Nav() {
   const [tasks] = useLocalStorage<Ttask[]>("task", []);
-  const [, setFilteredTasks] = useLocalStorage<Ttask[]>("filtredTask", []);
+  const [doneTasks] = useLocalStorage<Ttask[]>("doneTask", []);
+  const [, setDoneFilteredTasks] = useLocalStorage<Ttask[]>(
+    "doneFilteredTask",
+    []
+  );
+  const [, setFilteredTasks] = useLocalStorage<Ttask[]>("filteredTask", []);
 
   const today = new Date().toISOString().split("T")[0];
 
   const todayTasks = () => {
     const todayTasks = tasks.filter((task) => task.date === today);
+    const todayDoneTasks = doneTasks.filter((task) => task.date === today);
     setFilteredTasks(todayTasks);
+    setDoneFilteredTasks(todayDoneTasks);
   };
 
   const pendingTasks = () => {
     const futureTasks = tasks.filter((task) => task.date > today);
-    console.log;
+    const futureDoneTasks = doneTasks.filter((task) => task.date > today);
     setFilteredTasks(futureTasks);
+    setDoneFilteredTasks(futureDoneTasks);
   };
 
   const overdueTasks = () => {
     const pastTasks = tasks.filter((task) => task.date < today);
+    const pastDoneTasks = doneTasks.filter((task) => task.date < today);
     setFilteredTasks(pastTasks);
+    setDoneFilteredTasks(pastDoneTasks);
   };
 
   const setActive = (e: any) => {
