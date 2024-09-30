@@ -1,3 +1,4 @@
+import SortByDate from "../SortByDate/SortByDate";
 import AddTask from "./AddTask/AddTask";
 import { Ttask } from "@/shared/types";
 
@@ -11,7 +12,10 @@ function MainHeader(props: Props) {
       <h1 className="font-semibold text-4xl tracking-wide text-gray-700">
         Tasks
       </h1>
-      <AddTask setTasks={props.setTasks} />
+      <div className="flex space-x-5 justify-center items-center">
+        <SortByDate />
+        <AddTask setTasks={props.setTasks} />
+      </div>
     </div>
   );
 }

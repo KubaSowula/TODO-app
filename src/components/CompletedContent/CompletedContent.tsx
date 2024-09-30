@@ -48,7 +48,7 @@ function CompletedContent({
         doneFilteredTasks.map((task) => (
           <div
             key={task.id}
-            className="bg-green-400 border border-gray-200 my-2 p-3 py-5 grid grid-cols-12"
+            className="bg-green-400 border border-gray-200 my-2 py-8 px-3 grid grid-cols-12"
           >
             <div className="col-span-4 flex items-center">
               <Checkbox />

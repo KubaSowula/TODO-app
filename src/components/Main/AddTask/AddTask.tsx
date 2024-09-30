@@ -31,6 +31,7 @@ function AddTask(props: Props) {
         date: date,
         title: title,
         isStarted: isStarted,
+        completed: false,
       };
 
       const newTasks = [...prev, task];
@@ -58,7 +59,7 @@ function AddTask(props: Props) {
         <DialogHeader>
           <DialogTitle className="mb-4">Add New Task</DialogTitle>
           <DialogDescription asChild>
-            <form onSubmit={handleSubmit} className="">
+            <form onSubmit={handleSubmit} id="newForm">
               <div className="grid grid-cols-12">
                 <p className="col-span-2">Nazwa</p>
                 <input
@@ -69,6 +70,8 @@ function AddTask(props: Props) {
                     setTitle(e.target.value);
                   }}
                   required
+                  id="nameAddForm"
+                  name="nameAddForm"
                 />
               </div>
               <div className="grid grid-cols-12 mt-2">
@@ -81,6 +84,8 @@ function AddTask(props: Props) {
                     setDate(e.target.value);
                   }}
                   required
+                  id="dateAddForm"
+                  name="dateAddForm"
                 />
               </div>
               <div className="grid grid-cols-12 mt-2">
@@ -91,6 +96,8 @@ function AddTask(props: Props) {
                   onChange={(e) => {
                     setIsStarted(e.target.checked);
                   }}
+                  id="startedAddForm"
+                  name="startedAddForm"
                 />
               </div>
               <Button type="submit" className="w-32 bg-slate-500 mt-2">
@@ -100,6 +107,7 @@ function AddTask(props: Props) {
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
+      <DialogDescription className="hidden"></DialogDescription>
     </Dialog>
   );
 }

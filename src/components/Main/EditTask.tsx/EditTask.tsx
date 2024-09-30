@@ -21,7 +21,7 @@ function EditTask({ task, setTasks }: Props) {
   const [title, updateTitle] = useState(task.title);
   const [date, updateDate] = useState(task.date);
   const [isStarted, updateIsStarted] = useState(task.isStarted);
-  const [completed, updateCompleted] = useState(task.completed);
+  const [completed] = useState(task.completed);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -55,7 +55,7 @@ function EditTask({ task, setTasks }: Props) {
         <DialogHeader>
           <DialogTitle className="mb-4">Edit Task</DialogTitle>
           <DialogDescription asChild>
-            <form onSubmit={handleSubmit} className="">
+            <form onSubmit={handleSubmit} id="editForm">
               <div className="grid grid-cols-12">
                 <p className="col-span-2">Nazwa</p>
                 <input
@@ -66,6 +66,8 @@ function EditTask({ task, setTasks }: Props) {
                     updateTitle(e.target.value);
                   }}
                   required
+                  name="nameEditForm"
+                  id="nameEditForm"
                 />
               </div>
               <div className="grid grid-cols-12 mt-2">
@@ -78,6 +80,8 @@ function EditTask({ task, setTasks }: Props) {
                     updateDate(e.target.value);
                   }}
                   required
+                  name="dateEditForm"
+                  id="dateEditForm"
                 />
               </div>
               <div className="grid grid-cols-12 mt-2">
@@ -89,6 +93,8 @@ function EditTask({ task, setTasks }: Props) {
                   onChange={(e) => {
                     updateIsStarted(e.target.checked);
                   }}
+                  name="startedEditForm"
+                  id="startedEditForm"
                 />
               </div>
               <Button type="submit" className="w-32 bg-slate-500 mt-2">
@@ -97,6 +103,7 @@ function EditTask({ task, setTasks }: Props) {
             </form>
           </DialogDescription>
         </DialogHeader>
+        <DialogDescription className="hidden"></DialogDescription>
       </DialogContent>
     </Dialog>
   );

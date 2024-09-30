@@ -1,11 +1,13 @@
 import { Checkbox } from "@/shared/components/checkbox";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineConsoleSql } from "react-icons/ai";
 import EditTask from "../Main/EditTask.tsx/EditTask";
 import DeleteTask from "../DeleteTask/DeleteTask";
 import { Ttask } from "@/shared/types";
 import Completed from "../Completed/Completed";
 import { useDrag } from "react-dnd";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import { IoRocketSharp } from "react-icons/io5";
+import { MdRocket } from "react-icons/md";
 
 interface TaskItemProps {
   task: Ttask;
@@ -51,13 +53,13 @@ function TaskItem({ task, setTasks, setFilteredTask }: TaskItemProps) {
           setTasks={setTasks}
           setFilteredTasks={setFilteredTask}
         />
-        <div
-          className={
-            task.isStarted
-              ? "bg-yellow-300  w-7 h-10 rounded-2xl ml-5"
-              : "bg-red-600 w-7 h-10 rounded-2xl ml-5"
-          }
-        ></div>
+        <div>
+          {task.isStarted ? (
+            <IoRocketSharp className="fill-gray-500 size-5 ml-3" />
+          ) : (
+            <MdRocket className="fill-gray-500 size-5 ml-3" />
+          )}
+        </div>
       </div>
     </div>
   );
